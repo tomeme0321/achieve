@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :contacts, only:[:index, :new, :create] do
     collection do
       post :confirm
