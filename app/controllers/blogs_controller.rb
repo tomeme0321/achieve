@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
     #binding.pry
   end
   
-  def new#ここ改めて確認。まだわかっていない
+  def new
     if params[:back]
     @blog = Blog.new(blogs_params)   
    else
@@ -16,7 +16,8 @@ class BlogsController < ApplicationController
  end
   
   def create
-    @blog = Blog.create(blogs_params) #ここがvalidationをすることで@blogがつく。
+    @blog = Blog.new(blogs_params) 
+    @blog.user_id = current_user.id
     if @blog.save
      redirect_to blogs_path, notice: "ブログを作成しました！"
     else
