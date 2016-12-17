@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 100.times do |n|
+  name = Faker::Name.name 
   email = Faker::Internet.email
   password = "password"
-  User.create!(email: email,
+  User.create!(name: name,
+               email: email,
                password: password,
                password_confirmation: password,
                )
@@ -17,9 +19,10 @@ end
 
 
 n = 1
-while n <= 100
+while n <= 500
   Blog.create(
     title: "あああ",
+    content: "abcdefg",
     user_id: n
   )
   n = n + 1
